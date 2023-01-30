@@ -1,13 +1,6 @@
 <script lang="ts">
-
 	let score1: number = 0;
 	let score2: number = 0;
-
-	const lineRead: string = `${score1} a ${score2}`;
-
-	function scoreReader() {
-		// reads the score
-	}
 
 	function score1plus() {
 		score1++;
@@ -15,7 +8,7 @@
 	function score1minus() {
 		score1-=1;
 	}
-
+	
 	function score2plus() {
 		score2++;
 	}
@@ -23,13 +16,24 @@
 		score2-=1;
 	}
 
+	$: lineRead = `${score1} a ${score2}`;
+
+	function scoreReader() {
+		if ("speechSynthesis" in window) {
+			let msg = new SpeechSynthesisUtterance(lineRead);
+			msg.lang = "es-ES"
+			msg.rate = 0.8
+			speechSynthesis.speak(msg);
+		}
+	}
+
 </script>
 
 <div class="flex justify-center">
 
 	<div class="changer p1">
-		<button class="plus" on:click={score1plus}>+</button>
-		<button class="minus" on:click={score1minus}>-</button>
+		<button class="plus" on:click={score1plus} on:click={scoreReader}>+</button>
+		<button class="minus" on:click={score1minus} on:click={scoreReader}>-</button>
 	</div>
 	
 	<div class="flex h-full mt-5">
@@ -39,8 +43,8 @@
 	</div>
 
 	<div class="changer p2">
-		<button class="plus" on:click={score2plus}>+</button>
-		<button class="minus" on:click={score2minus}>-</button>
+		<button class="plus" on:click={score2plus} on:click={scoreReader}>+</button>
+		<button class="minus" on:click={score2minus} on:click={scoreReader}>-</button>
 	</div>
 	
 </div>
