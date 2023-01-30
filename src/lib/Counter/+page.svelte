@@ -1,25 +1,70 @@
+<script lang="ts">
+
+	let score1: number = 0;
+	let score2: number = 0;
+
+	const lineRead: string = `${score1} a ${score2}`;
+
+	function scoreReader() {
+		// reads the score
+	}
+
+	function score1plus() {
+		score1++;
+	}
+	function score1minus() {
+		score1-=1;
+	}
+
+	function score2plus() {
+		score2++;
+	}
+	function score2minus() {
+		score2-=1;
+	}
+
+</script>
+
 <div class="flex justify-center">
 
-	<div class="changer p1 flex flex-col">
-		<button class="plus bg-green-500 pt-2 px-2 rounded-t-md">+</button>
-		<button class="minus bg-green-500 pb-2 px-2 rounded-b-md">-</button>
+	<div class="changer p1">
+		<button class="plus" on:click={score1plus}>+</button>
+		<button class="minus" on:click={score1minus}>-</button>
 	</div>
 	
 	<div class="flex h-full mt-5">
-		<score class="score p1 px-2 bg-slate-200">0</score>
+		<score class="score p1">{score1}</score>
 		<divider class="px-2">-</divider>
-		<score class="score p2 px-2 bg-slate-200">0</score>
+		<score class="score p2">{score2}</score>
 	</div>
 
-	<div class="changer p2 flex flex-col">
-		<button class="plus bg-green-500 pt-2 px-2 rounded-t-md">+</button>
-		<button class="minus bg-green-500 pb-2 px-2 rounded-b-md">-</button>
+	<div class="changer p2">
+		<button class="plus" on:click={score2plus}>+</button>
+		<button class="minus" on:click={score2minus}>-</button>
 	</div>
 	
 </div>
 
 <style>
 
+.plus {
+	@apply bg-green-500 pt-2 px-2 rounded-t-md
+}
 
+.minus {
+	@apply bg-green-500 pb-2 px-2 rounded-b-md
+}
+
+.changer {
+	@apply flex flex-col text-white
+}
+
+.changer button:active {
+	@apply bg-green-600 shadow-inner;
+}
+
+.score {
+	@apply px-2 bg-slate-200
+}
 
 </style>
