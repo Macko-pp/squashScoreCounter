@@ -22,6 +22,7 @@
 		if ("speechSynthesis" in window) {
 			let msg = new SpeechSynthesisUtterance(lineRead);
 			msg.lang = "es-ES"
+			console.table(speechSynthesis.getVoices())
 			msg.rate = 0.8
 			speechSynthesis.speak(msg);
 		}
