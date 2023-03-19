@@ -36,9 +36,9 @@
 
 	function scoreReader() {
 
-		const audio1 = new Audio(`src/lib/audio/${score1}.mp3`)
-		const audioA = new Audio(`src/lib/audio/a.mp3`)
-		const audio2 = new Audio(`src/lib/audio/${score2}.mp3`)
+		const audio1 = new Audio(`/audio/${score1}.mp3`)
+		const audioA = new Audio(`/audio/a.mp3`)
+		const audio2 = new Audio(`/audio/${score2}.mp3`)
 
 
 		setTimeout(() => {
