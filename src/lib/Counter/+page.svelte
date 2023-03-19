@@ -16,16 +16,44 @@
 		score2-=1;
 	}
 
-	$: lineRead = `${score1} a ${score2}`;
+	// $: lineRead = `${score1} a ${score2}`;
+
+	// function scoreReader() {
+	// 	if ("speechSynthesis" in window) {
+	// 		let msg = new SpeechSynthesisUtterance(lineRead);
+	// 		msg.lang = "es-ES"
+	// 		console.table(speechSynthesis.getVoices())
+	// 		msg.rate = 0.8
+	// 		speechSynthesis.speak(msg);
+	// 	}
+	// }
+
+	function sleep(timeout: number) {
+		setTimeout(() => {
+			
+		}, timeout);
+	}
 
 	function scoreReader() {
-		if ("speechSynthesis" in window) {
-			let msg = new SpeechSynthesisUtterance(lineRead);
-			msg.lang = "es-ES"
-			console.table(speechSynthesis.getVoices())
-			msg.rate = 0.8
-			speechSynthesis.speak(msg);
-		}
+
+		const audio1 = new Audio(`src/lib/audio/${score1}.mp3`)
+		const audioA = new Audio(`src/lib/audio/a.mp3`)
+		const audio2 = new Audio(`src/lib/audio/${score2}.mp3`)
+
+
+		setTimeout(() => {
+    		audio1.play()
+
+			setTimeout(() => {
+    			audioA.play()
+
+				setTimeout(() => {
+    				audio2.play()
+				}, 500);
+
+			}, 500);
+			
+		}, 500);
 	}
 
 </script>
