@@ -39,21 +39,32 @@
 		const audio1 = new Audio(`/audio/${score1}.mp3`)
 		const audioA = new Audio(`/audio/a.mp3`)
 		const audio2 = new Audio(`/audio/${score2}.mp3`)
+		
+		const audioJugador1 = new Audio("/audio/jugador1.mp3")
+		const audioJugador2 = new Audio("/audio/jugador2.mp3")
 
+		if (score1 == 11) {
+			audioJugador1.play()
 
-		setTimeout(() => {
-    		audio1.play()
+		} else if (score2 == 11) {
+			audioJugador2.play()
 
+		} else {
 			setTimeout(() => {
-    			audioA.play()
+    			audio1.play()
 
 				setTimeout(() => {
-    				audio2.play()
-				}, 500);
+					audioA.play()
 
+					setTimeout(() => {
+						audio2.play()
+					}, 500);
+
+				}, 500);
+				
 			}, 500);
-			
-		}, 500);
+		}
+
 	}
 
 </script>
